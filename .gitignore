@@ -1,0 +1,11 @@
+.gemini/
+.vscode/
+__pycache__/
+.env
+*.pyc
+.DS_Store
+server_memory.json
+play/
+gemini.md
+renforcement.md
+script.py
