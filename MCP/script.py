@@ -1,7 +1,9 @@
 from server import mcp
 from fastmcp.client import Client
 import asyncio
-client = Client("http://127.0.0.1:8000/mcp")
+import os
+url = os.getenv("MCP_SERVER_URL", "http://localhost:8000")
+client = Client(url)
 characters = ["Jules", "Jules2", "Jules3", "Jules4", "Jules5"]
 map_important_locations = {
     "starting_area": {"x": 0, "y": 0},
@@ -33,4 +35,4 @@ async def craft_copper_pickaxe(character_name="Jules"):
         await client.call_tool("enqueue_action", {"character_name": character_name, "action": "crafting", "body": {"code": "copper_pickaxe", "quantity": 1}})
 if __name__ == "__main__":
     for i, character in enumerate(characters):
-        asyncio.run(kill_chickens(character_name=character, n=60))
+        asyncio.run(kill_chickens(character_name=character, n=1))
